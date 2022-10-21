@@ -19,27 +19,21 @@ proxy-groups:
     proxies:
       - 自动选择
       - "load-balance"
-      - way2science-txy-b1
-      - way2science-txy-b2
-      - way2science-txy-cf-b1
+      - way2science
   - name: 自动选择
     type: url-test
     proxies:
-      - way2science-txy-b1
-      - way2science-txy-b2
-      - way2science-txy-cf-b1
+      - way2science
     url: http://www.gstatic.com/generate_204
     interval: 1800
   - name: "load-balance"
     type: load-balance
     proxies:
-      - way2science-txy-b1
-      - way2science-txy-b2
+      - way2science
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     # strategy: round-robin
     strategy: consistent-hashing 
-
 
 rule-providers:
   reject:
