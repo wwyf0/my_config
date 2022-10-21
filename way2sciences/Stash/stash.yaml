@@ -11,7 +11,9 @@ proxy-providers:
   way2science:
     url: http://sub.store/download/substore-way2science
     interval: 600
-
+  way2science-with-cf:
+    url: http://sub.store/download/substore-way2science-with-cf
+    interval: 600
 
 proxy-groups:
   - name: PROXY
@@ -22,13 +24,13 @@ proxy-groups:
       - way2science
   - name: 自动选择
     type: url-test
-    proxies:
+    use:
       - way2science
     url: http://www.gstatic.com/generate_204
     interval: 1800
   - name: "load-balance"
     type: load-balance
-    proxies:
+    use:
       - way2science
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
@@ -122,6 +124,7 @@ rule-providers:
     interval: 86400
 
 rules:
+  - DOMAIN,sub-store.vercel.app,PROXY
   - DOMAIN,scholar.google.com,way2science-txy-b1
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
