@@ -22,10 +22,12 @@ proxy-groups:
       - 自动选择
       - "load-balance"
       - way2science
+      - way2science-with-cf
   - name: 自动选择
     type: url-test
     use:
       - way2science
+      - way2science-with-cf
     url: http://www.gstatic.com/generate_204
     interval: 1800
   - name: "load-balance"
